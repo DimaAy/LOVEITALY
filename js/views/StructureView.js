@@ -12,7 +12,8 @@ define(function(require) {
 
     events: {
       "tap #nav1": "myView",
-      "tap #nav2": "map"
+      "tap #nav2": "map",
+      "tap #productlist": "productlist"
     },
 
     initialize: function(options) {
@@ -47,6 +48,12 @@ define(function(require) {
 
     map: function(event) {
       Backbone.history.navigate("map", {
+        trigger: true
+      });
+    },
+
+     productlist: function(event) {
+      Backbone.history.navigate("productlist", {
         trigger: true
       });
     },

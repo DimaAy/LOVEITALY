@@ -5,6 +5,7 @@ define(function(require) {
   var MyModel = require("models/MyModel");
   var StructureView = require("views/StructureView");
   var MyView = require("views/pages/MyView");
+  var ProductListView = require("views/pages/products/ProductListView");
   var MapView = require("views/pages/MapView");
 
   var AppRouter = Backbone.Router.extend({
@@ -15,7 +16,8 @@ define(function(require) {
       // the default is the structure view
       "": "showStructure",
       "myview": "myView",
-      "map": "map"
+      "map": "map",
+      "productlist":"productListView"
     },
 
     firstView: "myview",
@@ -58,6 +60,17 @@ define(function(require) {
       // go to first view
       this.navigate(this.firstView, {trigger: true});
     },
+
+    productListView: function() {
+      // highlight the nav1 tab bar element as the current one
+    //  this.structureView.setActiveTabBarElement("nav1");
+      // create a model with an arbitrary attribute for testing the template engine
+     
+      // create the view
+      var page = new ProductListView();
+      // show the view
+      this.changePage(page);
+    }
 
   });
 
