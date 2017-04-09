@@ -11,5 +11,6 @@
 define({
     structure: "templates/structure.html",
     myview: "templates/myview.html",
-     productlist: "templates/product/productlist.html"
+    productlist: "templates/product/productlist.html",
+    categorylist: "templates/category/categorylist.html"
 });

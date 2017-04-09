@@ -13,7 +13,8 @@ define(function(require) {
     events: {
       "tap #nav1": "myView",
       "tap #nav2": "map",
-      "tap #productlist": "productlist"
+      "tap #productlist": "productlist",
+      "tap #categorylist": "categorylist"
     },
 
     initialize: function(options) {
@@ -58,6 +59,13 @@ define(function(require) {
       });
     },
 
+
+    categorylist: function(event) {
+      Backbone.history.navigate("categorylist", {
+        trigger: true
+      });
+    },
+    
     myView: function(event) {
       Backbone.history.navigate("myview", {
         trigger: true
