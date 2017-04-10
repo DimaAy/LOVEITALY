@@ -65,7 +65,7 @@ define(function(require) {
         trigger: true
       });
     },
-    
+     
     myView: function(event) {
       Backbone.history.navigate("myview", {
         trigger: true

@@ -14,9 +14,10 @@ define(function (require) {
            
             $('a#back-button').css('display', 'block');
             $('a#toggle-button').css('display', 'none');
-          
+            
             // load the precompiled template
             this.template = Utils.templates.productlist;
+            console.log(this);
             this.collection = new Products(); 
             this.collection.fetch();
             this.collection.on('sync', this.render, this);
@@ -29,9 +30,9 @@ define(function (require) {
         
         
         events: {
-            "tap #goToMap": "goToMap",
-            "tap #goToProductDetail": "goToProductDetail"
+            "tap #productdetails":"productdetails"
         },
+        
         render: function () {
             console.log(this.collection);
             $(this.el).html(this.template({
@@ -40,15 +41,12 @@ define(function (require) {
             //      this.model.toJSON()
             return this;
         },
-        goToMap: function (e) {
-            Backbone.history.navigate("map", {
+      
+      
+        productdetails: function(event) {
+            Backbone.history.navigate("productdetails/"+ $(event.currentTarget).data("productid"), {
                 trigger: true
-            });
-        },
-        goToProductDetail: function (ev) {
-            Backbone.history.navigate("gotoproductdetail/" + $(ev.currentTarget).data('id'), {
-                trigger: true
-            });
+         });
         }
                 
         });
