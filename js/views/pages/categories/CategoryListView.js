@@ -8,6 +8,9 @@ define(function (require) {
         constructorName: "CategoryListView",
         collection: Categories,
        
+        events: {
+            "tap #productsbycategory": "productsbycategory"
+        },
       
         initialize: function () {
             $('a#back-button').css('display', 'block');
@@ -31,23 +34,25 @@ define(function (require) {
             "tap #goToProductDetail": "goToProductDetail"
         },*/
         render: function () {
-            console.log(this.collection);
+            //console.log(this.collection);
             $(this.el).html(this.template({
                 Category: this.collection.toJSON()
             }));
             //      this.model.toJSON()
             return this;
-        }
+        },
+        
+        
        /* goToMap: function (e) {
             Backbone.history.navigate("map", {
                 trigger: true
             });
         },*/
-       /* goToProductDetail: function (ev) {
-            Backbone.history.navigate("gotoproductdetail/" + $(ev.currentTarget).data('id'), {
+        productsbycategory: function (ev) {
+            Backbone.history.navigate("productsbycategory/" + $(ev.currentTarget).data('categoryid'), {
                 trigger: true
             });
-        }*/
+        }
                 
         });
    

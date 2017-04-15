@@ -9,6 +9,7 @@ define(function(require) {
   var CategoryListView=require("views/pages/categories/CategoryListView");
   var MapView = require("views/pages/MapView");
   var ProductDetailsView = require("views/pages/products/ProductDetailsView");
+  var ProductsByCategoryView=require("views/pages/categories/ProductsByCategoryView");;
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -20,7 +21,8 @@ define(function(require) {
       "map": "map",
       "productlist":"productListView",
       "categorylist":"categoryListView",
-      "productdetails/:id":"productDetailsView"
+      "productdetails/:id":"productDetailsView",
+      "productsbycategory/:id":"productsByCategoryView"
     },
 
     firstView: "myview",
@@ -34,7 +36,10 @@ define(function(require) {
       this.structureView.setActiveTabBarElement("nav1");
       // create a model with an arbitrary attribute for testing the template engine
       var model = new MyModel({
-        key: "testValue"
+        key1: "Categories",
+        key2:"Products",
+        key3:"My Profile",
+        key4:"My Cart"
       });
       // create the view
       var page = new MyView({
@@ -93,6 +98,18 @@ define(function(require) {
       
       // create the view
       var page = new ProductDetailsView(id);
+      
+      // show the view
+      this.changePage(page);
+    },
+    
+    productsByCategoryView:function(id) {
+      // highlight the nav1 tab bar element as the current one
+    //  this.structureView.setActiveTabBarElement("nav1");
+      // create a model with an arbitrary attribute for testing the template engine
+      
+      // create the view
+      var page = new ProductsByCategoryView(id);
       
       // show the view
       this.changePage(page);

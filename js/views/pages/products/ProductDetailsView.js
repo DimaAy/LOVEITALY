@@ -17,6 +17,7 @@ define(function (require) {
             console.log(this);
             this.model=new Product({id:productID});
             this.model.fetch();
+            console.log(this.model);
             this.model.on('sync', this.render, this);
             
         },

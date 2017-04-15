@@ -1,20 +1,18 @@
 <ul class="table-view">
-    <li class="table-view-cell media" id="goToMap">
-	<a class="navigate-right">
+    <li class="table-view-cell media">
+        {{#each Product}}
+	<a class="navigate-right" id="productdetails" data-productid="{{id}}">
             <span class="media-object pull-left icon icon-pages"></span>
 		<div class="media-body">
-                    {{#each Product}}
-                    <div id="productdetails" data-productid="{{id}}">
-                        <div>   {{name}}</div>
-                        <br>
-                    </div>
-                    {{/each}}
+                    {{name}}     
 		</div>
 	</a>
+        {{/each}}
     </li>
 </ul>
-
+<!--
 <div class="i-4">Name</div>
 <div class="i-8"></div>
+-->
 
 

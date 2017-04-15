@@ -14,4 +14,5 @@ define({
     productlist: "templates/product/productlist.html",
     categorylist: "templates/category/categorylist.html",
     productdetails:"templates/product/productdetails.html"
+    //productsbycategory: "templates/category/ productsbycategory.html"
 });
