@@ -2,14 +2,14 @@ define(function (require) {
 
     var Backbone = require("backbone");
     var Utils = require("utils");
-    var Categories = require("collections/Categories");
+    var Companies = require("collections/Companies");
 
-    var CategoryListView = Utils.Page.extend({
-        constructorName: "CategoryListView",
-        collection: Categories,
+    var CompanyListView = Utils.Page.extend({
+        constructorName: "CompanyListView",
+        collection: Companies,
        
         events: {
-            "tap #productsbycategory": "productsbycategory"
+            "tap #productsbycompany": "productsbycompany"
         },
       
         initialize: function () {
@@ -17,14 +17,14 @@ define(function (require) {
             $('a#toggle-button').css('display', 'none');
           
             // load the precompiled template
-            this.template = Utils.templates.categorylist;
-            this.collection = new Categories(); 
+            this.template = Utils.templates.companylist;
+            this.collection = new Companies(); 
             this.collection.fetch();
             console.log(this.collection);
             this.collection.on('sync', this.render, this);
             
         },
-        id: "categorylist",
+        id: "comapnylist",
         className: "i-g page",
         
         
@@ -37,7 +37,7 @@ define(function (require) {
         render: function () {
             //console.log(this.collection);
             $(this.el).html(this.template({
-                Category: this.collection.toJSON()
+                Company: this.collection.toJSON()
             }));
             //      this.model.toJSON()
             return this;
@@ -49,8 +49,8 @@ define(function (require) {
                 trigger: true
             });
         },*/
-        productsbycategory: function (ev) {
-            Backbone.history.navigate("productsbycategory/" + $(ev.currentTarget).data('categoryid'), {
+        productsbycompany: function (ev) {
+            Backbone.history.navigate("productsbycompany/" + $(ev.currentTarget).data('companyid'), {
                 trigger: true
             });
         }
@@ -58,6 +58,6 @@ define(function (require) {
         });
    
 
-    return CategoryListView;
+    return  CompanyListView;
 
 });

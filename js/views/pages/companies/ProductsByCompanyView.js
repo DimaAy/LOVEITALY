@@ -2,35 +2,35 @@ define(function (require) {
 
     var Backbone = require("backbone");
     var Utils = require("utils");
-    var Products = require("collections/Products");
+    var ProductsByCompany = require("collections/ProductsByCompany");
 
-    var ProductListView = Utils.Page.extend({
-        constructorName: "ProductListView",
-        collection: Products,
+    var ProductsByCompanyView = Utils.Page.extend({
+        constructorName: "Products",
+        collection: ProductsByCompany,
        
-        events: {
+       events: {
             "tap #productdetails":"productdetails"
         },
-        
-        initialize: function () {
+      
+        initialize: function (companyID) {
            
-            
+           
             $('a#back-button').css('display', 'block');
             $('a#toggle-button').css('display', 'none');
             
             // load the precompiled template
             this.template = Utils.templates.productlist;
-            //console.log(this.template);
-            this.collection = new Products(); 
+            console.log(companyID);
+            this.collection = new ProductsByCompany(companyID);
+            //this.collection.setCategory(categoryID);
             this.collection.fetch();
-            //console.log(this.collection);
+            console.log(this.collection);
             this.collection.on('sync', this.render, this);
             
+            
         },
-        id: "productlist",
+        id: "productsbycategory",
         className: "i-g page",
-        
-        
         
         
         
@@ -43,7 +43,7 @@ define(function (require) {
             return this;
         },
       
-      
+        
         productdetails: function(event) {
             Backbone.history.navigate("productdetails/"+ $(event.currentTarget).data("productid"), {
                 trigger: true
@@ -53,6 +53,8 @@ define(function (require) {
         });
    
 
-    return ProductListView;
+    return ProductsByCompanyView;
 
 });
+
+

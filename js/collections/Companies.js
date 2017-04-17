@@ -1,14 +1,14 @@
 define(function (require) {
 
     var Backbone = require("backbone");
-    //var Category = require("models/Category"); 
-    var Categories = Backbone.Collection.extend({
+   // var Category = require("models/Category"); 
+    var Companies = Backbone.Collection.extend({
       
         //initial : 0,
         //final : 0,
         //category: undefined,
         //model: Category,
-        url : 'http://loveitaly.altervista.org/api/categories/?display=full&io_format=JSON&ws_key=IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H',
+        url : 'http://loveitaly.altervista.org/api/manufacturers?display=full&io_format=JSON&ws_key=IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H',
        /* setLimit : function(limit){
           this.url += '&limit=' + encodeURIComponent(limit);
           final = limit;
@@ -42,8 +42,9 @@ define(function (require) {
           }
         },*/
         parse: function (data) {
-            return data.categories;
+            console.log(data);
+            return data.manufacturers;
         }
     });
-    return Categories;
+    return Companies;
 });

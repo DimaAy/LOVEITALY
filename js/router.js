@@ -7,9 +7,11 @@ define(function(require) {
   var MyView = require("views/pages/MyView");
   var ProductListView = require("views/pages/products/ProductListView");
   var CategoryListView=require("views/pages/categories/CategoryListView");
+  var CompanyListView=require('views/pages/companies/CompanyListView');
   var MapView = require("views/pages/MapView");
   var ProductDetailsView = require("views/pages/products/ProductDetailsView");
-  var ProductsByCategoryView=require("views/pages/categories/ProductsByCategoryView");;
+  var ProductsByCategoryView=require("views/pages/categories/ProductsByCategoryView");
+  var ProductsByCompanyView=require('views/pages/companies/ProductsByCompanyView');
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -21,8 +23,10 @@ define(function(require) {
       "map": "map",
       "productlist":"productListView",
       "categorylist":"categoryListView",
+      "companylist":"companyListView",
       "productdetails/:id":"productDetailsView",
-      "productsbycategory/:id":"productsByCategoryView"
+      "productsbycategory/:id":"productsByCategoryView",
+      "productsbycompany/:id":"productsByCompanyView"
     },
 
     firstView: "myview",
@@ -38,7 +42,7 @@ define(function(require) {
       var model = new MyModel({
         key1: "Categories",
         key2:"Products",
-        key3:"My Profile",
+        key3:"Companies",
         key4:"My Cart"
       });
       // create the view
@@ -70,48 +74,56 @@ define(function(require) {
     },
 
     productListView: function() {
-      // highlight the nav1 tab bar element as the current one
-    //  this.structureView.setActiveTabBarElement("nav1");
-      // create a model with an arbitrary attribute for testing the template engine
-     
-      // create the view
+     // create the view
       var page = new ProductListView();
       // show the view
+      console.log("ciao productlist");
+      console.log(page);
       this.changePage(page);
 
     },
     
      categoryListView: function() {
-      // highlight the nav1 tab bar element as the current one
-    //  this.structureView.setActiveTabBarElement("nav1");
-      // create a model with an arbitrary attribute for testing the template engine
-     
       // create the view
       var page = new CategoryListView();
       // show the view
       this.changePage(page);
     },
+    
+    companyListView:function() {
+      // create the view
+      var page = new CompanyListView();
+      // show the view
+      this.changePage(page);
+    },
     productDetailsView: function(id) {
-      // highlight the nav1 tab bar element as the current one
-    //  this.structureView.setActiveTabBarElement("nav1");
-      // create a model with an arbitrary attribute for testing the template engine
-      
       // create the view
       var page = new ProductDetailsView(id);
-      
+      console.log("ciao productDetails");
+      console.log(page);
       // show the view
       this.changePage(page);
     },
     
     productsByCategoryView:function(id) {
-      // highlight the nav1 tab bar element as the current one
-    //  this.structureView.setActiveTabBarElement("nav1");
-      // create a model with an arbitrary attribute for testing the template engine
-      
       // create the view
       var page = new ProductsByCategoryView(id);
       
       // show the view
+      
+      console.log("ciao productby");
+      console.log(page);
+      this.changePage(page);
+    },
+    
+    productsByCompanyView:function(id) {
+      // create the view
+      var page = new ProductsByCompanyView(id);
+      
+      // show the view
+      
+      console.log("ciao productby");
+      console.log(page);
       this.changePage(page);
     }
 

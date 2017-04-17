@@ -14,11 +14,12 @@ define(function (require) {
             
             // load the precompiled template
             this.template = Utils.templates.productdetails;
-            console.log(this);
+            //console.log(this.template);
             this.model=new Product({id:productID});
             this.model.fetch();
-            console.log(this.model);
+            //console.log(this.model);
             this.model.on('sync', this.render, this);
+            
             
         },
         id: "productdetails",
@@ -32,9 +33,9 @@ define(function (require) {
             "tap #goToProductDetail": "goToProductDetail"
         },*/
         render: function () {
-            $(this.el).html(this.template({
-                ProductDetalis: this.model.toJSON()
-            }));
+            $(this.el).html(this.template(
+               this.model.toJSON()
+            ));
             //      this.model.toJSON()
             return this;
         }

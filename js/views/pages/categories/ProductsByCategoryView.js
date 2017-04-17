@@ -8,6 +8,9 @@ define(function (require) {
         constructorName: "Products",
         collection: ProductsByCategory,
        
+       events: {
+            "tap #productdetails":"productdetails"
+        },
       
         initialize: function (categoryID) {
            
@@ -31,11 +34,6 @@ define(function (require) {
         
         
         
-        /*
-        events: {
-            "tap #productdetails":"productdetails"
-        },*/
-        
         render: function () {
             //console.log(this.collection);
             $(this.el).html(this.template({
@@ -43,14 +41,14 @@ define(function (require) {
             }));
             //      this.model.toJSON()
             return this;
-        }
+        },
       
-        /*
+        
         productdetails: function(event) {
             Backbone.history.navigate("productdetails/"+ $(event.currentTarget).data("productid"), {
                 trigger: true
          });
-        }*/
+        }
                 
         });
    

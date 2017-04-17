@@ -13,6 +13,7 @@ define({
     myview: "templates/myview.html",
     productlist: "templates/product/productlist.html",
     categorylist: "templates/category/categorylist.html",
-    productdetails:"templates/product/productdetails.html"
+    productdetails:"templates/product/productdetails.html",
+    companylist:"templates/company/companylist.html"
     //productsbycategory: "templates/category/ productsbycategory.html"
 });
