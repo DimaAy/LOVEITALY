@@ -23,7 +23,6 @@ define(function (require) {
             //console.log(this.template);
             this.collection = new Products(); 
             this.collection.fetch();
-            //console.log(this.collection);
             this.collection.on('sync', this.render, this);
             
         },
@@ -35,7 +34,7 @@ define(function (require) {
         
         
         render: function () {
-            //console.log(this.collection);
+            
             $(this.el).html(this.template({
                 Product: this.collection.toJSON()
             }));

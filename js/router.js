@@ -5,13 +5,16 @@ define(function(require) {
   var MyModel = require("models/MyModel");
   var StructureView = require("views/StructureView");
   var MyView = require("views/pages/MyView");
+  var MapView = require("views/pages/MapView");
   var ProductListView = require("views/pages/products/ProductListView");
   var CategoryListView=require("views/pages/categories/CategoryListView");
   var CompanyListView=require('views/pages/companies/CompanyListView');
-  var MapView = require("views/pages/MapView");
   var ProductDetailsView = require("views/pages/products/ProductDetailsView");
   var ProductsByCategoryView=require("views/pages/categories/ProductsByCategoryView");
   var ProductsByCompanyView=require('views/pages/companies/ProductsByCompanyView');
+  Backbone.emulateHTTP = true; // Use _method parameter rather than using DELETE and PUT methods
+  Backbone.emulateJSON = true; // Send data to server via parameter rather than via request content
+
   var AppRouter = Backbone.Router.extend({
 
     constructorName: "AppRouter",
@@ -40,10 +43,7 @@ define(function(require) {
       this.structureView.setActiveTabBarElement("nav1");
       // create a model with an arbitrary attribute for testing the template engine
       var model = new MyModel({
-        key1: "Categories",
-        key2:"Products",
-        key3:"Companies",
-        key4:"My Cart"
+        key: "testValue"
       });
       // create the view
       var page = new MyView({
@@ -72,13 +72,11 @@ define(function(require) {
       // go to first view
       this.navigate(this.firstView, {trigger: true});
     },
-
+    
     productListView: function() {
      // create the view
       var page = new ProductListView();
       // show the view
-      console.log("ciao productlist");
-      console.log(page);
       this.changePage(page);
 
     },
@@ -99,8 +97,7 @@ define(function(require) {
     productDetailsView: function(id) {
       // create the view
       var page = new ProductDetailsView(id);
-      console.log("ciao productDetails");
-      console.log(page);
+
       // show the view
       this.changePage(page);
     },
@@ -110,9 +107,6 @@ define(function(require) {
       var page = new ProductsByCategoryView(id);
       
       // show the view
-      
-      console.log("ciao productby");
-      console.log(page);
       this.changePage(page);
     },
     

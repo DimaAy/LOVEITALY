@@ -1,13 +1,13 @@
 define(function (require) {
 
     var Backbone = require("backbone");
-    //var Product = require("models/Product"); 
+    var Product = require("models/Product"); 
     var Products = Backbone.Collection.extend({
       
         initiale : 0,
         finale : 0,
         category: undefined,
-        //model: Product,
+        model: Product,
         url : 'http://loveitaly.altervista.org/api/products/?display=full&io_format=JSON&ws_key=IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H',
        /* setLimit : function(limite){
           this.url += '&limit=' + encodeURIComponent(limite);
@@ -42,6 +42,7 @@ define(function (require) {
           }
         },*/
         parse: function (data) {
+            console.log(data);
             return data.products;
         }
     });

@@ -20,36 +20,23 @@ define(function (require) {
             this.template = Utils.templates.categorylist;
             this.collection = new Categories(); 
             this.collection.fetch();
-            console.log(this.collection);
-            this.collection.on('sync', this.render, this);
+            this.collection.on('add', this.render, this);
             
         },
         id: "categorylist",
         className: "i-g page",
         
-        
-        
-        
-        /*events: {
-            "tap #goToMap": "goToMap",
-            "tap #goToProductDetail": "goToProductDetail"
-        },*/
         render: function () {
-            //console.log(this.collection);
             $(this.el).html(this.template({
                 Category: this.collection.toJSON()
             }));
             //      this.model.toJSON()
             return this;
         },
-        
-        
-       /* goToMap: function (e) {
-            Backbone.history.navigate("map", {
-                trigger: true
-            });
-        },*/
+       
         productsbycategory: function (ev) {
+            console.log('event.target');
+            console.log( $(ev.currentTarget).data('categoryid'));
             Backbone.history.navigate("productsbycategory/" + $(ev.currentTarget).data('categoryid'), {
                 trigger: true
             });

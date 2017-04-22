@@ -1,21 +1,14 @@
-<ul class="table-view">
-	
-    <li class="table-view-cell media" >
+<div class="content-block-inner">
+    <div class="cart-heading-1 ">
+        <h2>Companies</h2>
+    </div>
+    <div class="shop-area">
         {{#each Company}}
-        <a class="navigate-right" id="productsbycompany" data-companyid="{{id}}">
-			
-            <span class="media-object pull-left icon icon-pages"></span>
-		<div class="media-body">
-                    {{name}}          
-                </div>
-                   
-	</a>
+        <div  id="productsbycompany" data-companyid="{{id}}">
+            <div >
+                <h3><a href="#">{{name}}</a></h3>
+            </div>
+        </div>
         {{/each}}
-    </li>
-     
-</ul>
-<!--
-<div class="i-4">Name</div>
-<div class="i-8"></div>
--->
-
+    </div>
+</div>

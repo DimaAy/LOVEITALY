@@ -5,7 +5,7 @@ define(function (require) {
     var ProductsByCompany = require("collections/ProductsByCompany");
 
     var ProductsByCompanyView = Utils.Page.extend({
-        constructorName: "Products",
+        constructorName: "ProductsByCompanyView",
         collection: ProductsByCompany,
        
        events: {

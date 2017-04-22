@@ -5,7 +5,7 @@ define(function (require) {
     var ProductsByCategory = require("collections/ProductsByCategory");
 
     var ProductsByCategoryView = Utils.Page.extend({
-        constructorName: "Products",
+        constructorName: "ProductsByCategoryView",
         collection: ProductsByCategory,
        
        events: {
@@ -45,7 +45,8 @@ define(function (require) {
       
         
         productdetails: function(event) {
-            Backbone.history.navigate("productdetails/"+ $(event.currentTarget).data("productid"), {
+            console.log($(event.currentTarget));
+            Backbone.history.navigate("productdetails/"+ $(event.currentTarget).data('productid'), {
                 trigger: true
          });
         }

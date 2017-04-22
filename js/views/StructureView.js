@@ -54,6 +54,12 @@ define(function(require) {
       });
     },
 
+    myView: function(event) {
+      Backbone.history.navigate("myview", {
+        trigger: true
+      });
+    },
+    
      productlist: function(event) {
       Backbone.history.navigate("productlist", {
         trigger: true
@@ -69,12 +75,6 @@ define(function(require) {
     
     companylist: function(event) {
       Backbone.history.navigate("companylist", {
-        trigger: true
-      });
-    },
-     
-    myView: function(event) {
-      Backbone.history.navigate("myview", {
         trigger: true
       });
     }

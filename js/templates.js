@@ -15,5 +15,4 @@ define({
     categorylist: "templates/category/categorylist.html",
     productdetails:"templates/product/productdetails.html",
     companylist:"templates/company/companylist.html"
-    //productsbycategory: "templates/category/ productsbycategory.html"
 });
