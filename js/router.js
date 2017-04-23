@@ -12,6 +12,7 @@ define(function(require) {
   var ProductDetailsView = require("views/pages/products/ProductDetailsView");
   var ProductsByCategoryView=require("views/pages/categories/ProductsByCategoryView");
   var ProductsByCompanyView=require('views/pages/companies/ProductsByCompanyView');
+  var CartView=require('views/pages/Cart/CartView');
   Backbone.emulateHTTP = true; // Use _method parameter rather than using DELETE and PUT methods
   Backbone.emulateJSON = true; // Send data to server via parameter rather than via request content
 
@@ -29,7 +30,9 @@ define(function(require) {
       "companylist":"companyListView",
       "productdetails/:id":"productDetailsView",
       "productsbycategory/:id":"productsByCategoryView",
-      "productsbycompany/:id":"productsByCompanyView"
+      "productsbycompany/:id":"productsByCompanyView",
+      "addtocart/:id/:quantity":"addToCartView",
+      "cart":"goToCart"
     },
 
     firstView: "myview",
@@ -119,6 +122,26 @@ define(function(require) {
       console.log("ciao productby");
       console.log(page);
       this.changePage(page);
+    },
+    addToCartView :function(id,quantity) {
+      console.log("cioa router");
+      if (!this.cartView) {
+          console.log("cioa router IFFF");
+        this.cartView = new CartView(); 
+      }
+      this.cartView.addProduct(id,quantity);
+      //this.cartView.addProduct(id,quantity);
+    },
+    
+    goToCart: function() {
+      console.log("cioa router");
+      if (!this.cartView) {
+        console.log("cioa router IFFF");
+        this.cartView = new CartView(); 
+      }
+      var page=this.cartView.render();
+      this.changePage(page);
+      //this.cartView.addProduct(id,quantity);
     }
 
   });

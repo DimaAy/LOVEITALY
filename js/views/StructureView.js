@@ -15,7 +15,8 @@ define(function(require) {
       "tap #nav2": "map",
       "tap #productlist": "productlist",
       "tap #categorylist": "categorylist",
-      "tap #companylist": "companylist"
+      "tap #companylist": "companylist",
+      "tap #cart":"cart"
     },
 
     initialize: function(options) {
@@ -75,6 +76,12 @@ define(function(require) {
     
     companylist: function(event) {
       Backbone.history.navigate("companylist", {
+        trigger: true
+      });
+    },
+    
+    cart: function(event) {
+      Backbone.history.navigate("cart", {
         trigger: true
       });
     }
