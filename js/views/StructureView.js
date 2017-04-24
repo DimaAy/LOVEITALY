@@ -21,6 +21,7 @@ define(function(require) {
 
     initialize: function(options) {
       // load the precompiled template
+      console.log("I AM HERE");
       this.template = Utils.templates.structure;
       //this.on("inTheDOM", this.rendered);
       // bind the back event to the goBack function
@@ -81,6 +82,7 @@ define(function(require) {
     },
     
     cart: function(event) {
+        console.log(event);
       Backbone.history.navigate("cart", {
         trigger: true
       });

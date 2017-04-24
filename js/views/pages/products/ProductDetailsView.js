@@ -33,7 +33,6 @@ define(function (require) {
             $(this.el).html(this.template(
                this.model.toJSON()
             ));
-            //      this.model.toJSON()
             return this;
         },
         
@@ -44,7 +43,6 @@ define(function (require) {
             value++;
             document.getElementById('number').value = value;
             console.log(value);
-         
         },
         
         decreaseQuantity: function(event) {
@@ -60,7 +58,7 @@ define(function (require) {
         addtocart: function(event) {
             var id=$(event.currentTarget).data("productid");
             var quantity=document.getElementById('number').value;
-            //var value = parseInt(document.getElementById('number').value, 10);
+           
  
             document.getElementById('number').value = 1;
             console.log(id);

@@ -2,6 +2,7 @@ define(function(require) {
 
   var $ = require("jquery");
   var Backbone = require("backbone");
+  var Handlebars = require('handlebars');
   var MyModel = require("models/MyModel");
   var StructureView = require("views/StructureView");
   var MyView = require("views/pages/MyView");
@@ -13,13 +14,17 @@ define(function(require) {
   var ProductsByCategoryView=require("views/pages/categories/ProductsByCategoryView");
   var ProductsByCompanyView=require('views/pages/companies/ProductsByCompanyView');
   var CartView=require('views/pages/Cart/CartView');
+  var ProductCart=require("models/ProductCart");
+  //CartView=new CartView();
+  var Cart=require('collections/Cart');
+  Cart=new Cart();
   Backbone.emulateHTTP = true; // Use _method parameter rather than using DELETE and PUT methods
   Backbone.emulateJSON = true; // Send data to server via parameter rather than via request content
 
   var AppRouter = Backbone.Router.extend({
-
+    model: ProductCart,
     constructorName: "AppRouter",
-
+   
     routes: {
       // the default is the structure view
       "": "showStructure",
@@ -39,6 +44,15 @@ define(function(require) {
 
     initialize: function(options) {
       this.currentView = undefined;
+       Handlebars.registerHelper('twodigit', function (variable, options) {
+                if (typeof variable !== 'undefined') {
+                    var temp = variable.toString();
+                    return temp.substring(0, temp.indexOf(".") + 2);
+                } else {
+
+                    return variable;
+                }
+            });
     },
 
     myView: function() {
@@ -72,6 +86,8 @@ define(function(require) {
         document.body.appendChild(this.structureView.render().el);
         this.structureView.trigger("inTheDOM");
       }
+      console.log("PLEAAAASSSSEEE");
+      
       // go to first view
       this.navigate(this.firstView, {trigger: true});
     },
@@ -80,6 +96,7 @@ define(function(require) {
      // create the view
       var page = new ProductListView();
       // show the view
+      console.log(page);
       this.changePage(page);
 
     },
@@ -100,7 +117,7 @@ define(function(require) {
     productDetailsView: function(id) {
       // create the view
       var page = new ProductDetailsView(id);
-
+      console.log(page);
       // show the view
       this.changePage(page);
     },
@@ -123,25 +140,34 @@ define(function(require) {
       console.log(page);
       this.changePage(page);
     },
+    
+    
     addToCartView :function(id,quantity) {
-      console.log("cioa router");
-      if (!this.cartView) {
-          console.log("cioa router IFFF");
+      //console.log("cioa router add to Cart");
+      //console.log(this.cartView);
+      /*if (!this.cartView) {
+        console.log("cioa router IFFF");
         this.cartView = new CartView(); 
-      }
-      this.cartView.addProduct(id,quantity);
+      }*/
+     // Cart.addProduct(id,quantity);
+      console.log ("ciao from add");
+      //console.log(this.collection.get(id));
+      if (!Cart.get(id)){
+           this.model=new ProductCart({id:id,quantity:quantity});
+       }
+       this.model.edit(quantity);
+            //console.log(this.model instanceof Backbone.Model);
+       Cart.add(this.model);
+            //console.log(this.collection);
+      console.log(Cart);
+      //this.cartView.addProduct(id,quantity);
       //this.cartView.addProduct(id,quantity);
     },
     
     goToCart: function() {
-      console.log("cioa router");
-      if (!this.cartView) {
-        console.log("cioa router IFFF");
-        this.cartView = new CartView(); 
-      }
-      var page=this.cartView.render();
+      var page=new CartView(Cart);
       this.changePage(page);
-      //this.cartView.addProduct(id,quantity);
+      
     }
 
   });
