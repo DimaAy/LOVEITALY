@@ -15,9 +15,11 @@ define(function(require) {
   var ProductsByCompanyView=require('views/pages/companies/ProductsByCompanyView');
   var CartView=require('views/pages/Cart/CartView');
   var ProductCart=require("models/ProductCart");
-  //CartView=new CartView();
+  var SignUpView=require("views/pages/profile/SignUpView");
   var Cart=require('collections/Cart');
   Cart=new Cart();
+  var Customer=require("models/Customer");
+  Customer=new Customer();
   Backbone.emulateHTTP = true; // Use _method parameter rather than using DELETE and PUT methods
   Backbone.emulateJSON = true; // Send data to server via parameter rather than via request content
 
@@ -37,7 +39,9 @@ define(function(require) {
       "productsbycategory/:id":"productsByCategoryView",
       "productsbycompany/:id":"productsByCompanyView",
       "addtocart/:id/:quantity":"addToCartView",
-      "cart":"goToCart"
+      "cart":"goToCart",
+      "signup":"goToSignUpView",
+      "update/:firstName/:lastName/:email/:password":"signUpContact"
     },
 
     firstView: "myview",
@@ -168,6 +172,27 @@ define(function(require) {
       var page=new CartView(Cart);
       this.changePage(page);
       
+    },
+    
+    goToSignUpView: function() {
+      var page=new SignUpView();
+      this.changePage(page);
+      
+    },
+    
+    signUpContact: function(firstName,lastName,email,password){
+        
+       var data={
+            firstName:firstName,
+            lastName:lastName,
+            email:email,
+           password:password
+       };
+      
+       Customer=data;
+       console.log(Customer);
+       window.localStorage.setItem('customer', JSON.stringify(Customer));
+       console.log(window.localStorage.getItem('customer')); 
     }
 
   });
