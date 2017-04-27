@@ -17,7 +17,9 @@ define(function(require) {
       "tap #categorylist": "categorylist",
       "tap #companylist": "companylist",
       "tap #cart":"cart",
-      "tap #signup":"signup"
+      //"tap #signup":"signup",
+      "tap #signin":"signin",
+      "tap #signout":"signout"
     },
 
     initialize: function(options) {
@@ -91,11 +93,26 @@ define(function(require) {
       });
     },
     
-    signup:function(event) {
+    signin:function(event) {
+      if (!window.localStorage.getItem("session"))
+      {
+      Backbone.history.navigate("signin", {
+        trigger: true
+      });
+      }
+      else{console.log("already signed in");
+      }
+    },
+    
+    signout: function(){
+        window.localStorage.removeItem("session");
+    }
+    
+    /*signup:function(event) {
       Backbone.history.navigate("signup", {
         trigger: true
       });
-    }
+    }*/
   });
 
   return StructureView;

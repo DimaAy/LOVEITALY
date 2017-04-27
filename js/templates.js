@@ -16,5 +16,6 @@ define({
     productdetails:"templates/product/productdetails.html",
     companylist:"templates/company/companylist.html",
     cart:"templates/cart/cart.html",
-    signup:"templates/profile/signup.html"
+    signup:"templates/profile/signup.html",
+    signin:"templates/profile/signin.html"
 });

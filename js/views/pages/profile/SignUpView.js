@@ -38,20 +38,107 @@ define(function(require) {
     },
     
     update: function(event) {
-            var firstName=document.getElementById('firstname').value;;
+            var firstName=document.getElementById('firstname').value;
             var lastName=document.getElementById('lastname').value;
             var email=document.getElementById('email').value;
             var password=document.getElementById('password').value;
            
-           console.log(firstName);
+           console.log($("#firstname").val());
            console.log(lastName);
            console.log(email);
            console.log(password);
-           
-           Backbone.history.navigate("update/"+firstName+"/"+lastName+"/"+email+"/"+password, {
+           data={
+               //id: $("#idCostumer").val(),
+               firstname: $("#firstname").val(),
+               lastname: $("#lastname").val(),
+               password: $("#password").val(),
+               email: $("#email").val()
+           };
+           if (this.validate(data))
+           {
+             Backbone.history.navigate("update/"+firstName+"/"+lastName+"/"+email+"/"+password, {
                 trigger: true
-         });
-    }
+            });  
+           }
+           
+          
+    },
+    validate: function (data) {
+            var validity = 0;
+            console.log("Validat");
+            if (data.firstname.lenght > this.validationparameters.firstname.length.maximum || data.firstname === "" || data.firstname === null) {
+               // $('#firstnameError').attr('class', 'mostra');
+                $('#firstnameError').text("Nome obligatorio, lunghezza deve essere inferiore di 32 caratteri");
+                validity++;
+                console.log("Validat 1");
+            }else{
+                $('#firstnameError').attr('class', 'nascosto');
+            }
+            if (data.lastname.lenght > this.validationparameters.lastname.length.maximum || data.lastname === "" || data.lastname === null) {
+                $('#lastnameError').attr('class', 'mostra');
+                $('#lastnameError').text("Cognome obligatorio e lunghezza deve essere inferiore di 32 caratteri");
+                validity++;
+            }else{
+                $('#lastnameError').attr('class', 'nascosto');
+            }
+            if (data.password.lenght > this.validationparameters.password.length.maximum || data.password === "" || data.password === null) {
+                $('#passwordError').attr('class', 'mostra');
+                $('#passwordError').text("password Richiesta e lunghezza deve essere inferiore di 32 caratteri");
+                validity++;
+            }else{
+                $('#passwordError').attr('class', 'nascosto');
+            }
+            if (!this.isEmail(data.email)) {
+                $('#emailError').attr('class', 'mostra');
+                $('#emailError').text("Inserisci un email corretta");
+                validity++;
+            }else{
+                $('#emailError').attr('class', 'nascosto');
+            }
+           /* if (data.password2 !== data.password) {
+                $('#password2Error').attr('class', 'mostra');
+                $('#password2Error').text("Password Differenti");
+                validity++;
+            }else{
+                $('#password2Error').attr('class', 'nascosto');
+            }*/
+            console.log(validity);
+            if (validity === 0) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validationparameters: {
+            firstname: {
+                length: {
+                    maximum: 32,
+                    tooLong: 'Massimo 32 caratteri'
+                }
+            },
+            lastname: {
+                length: {
+                    maximum: 32,
+                    tooLong: 'Massimo 32 caratteri'
+                }
+            },
+            password: {
+                length: {
+                    maximum: 32,
+                    tooLong: 'Massimo 32 caratteri'
+                }
+            },
+            email: {
+                length: {
+                    maximum: 128,
+                    tooLong: 'Massimo 128 caratteri'
+                }
+            }
+        },
+        isEmail: function (email) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            return regex.test(email);
+        }
     
   });
 

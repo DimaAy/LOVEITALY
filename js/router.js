@@ -16,6 +16,7 @@ define(function(require) {
   var CartView=require('views/pages/Cart/CartView');
   var ProductCart=require("models/ProductCart");
   var SignUpView=require("views/pages/profile/SignUpView");
+  var SignInView=require("views/pages/profile/SignInView");
   var Cart=require('collections/Cart');
   Cart=new Cart();
   var Customer=require("models/Customer");
@@ -41,6 +42,7 @@ define(function(require) {
       "addtocart/:id/:quantity":"addToCartView",
       "cart":"goToCart",
       "signup":"goToSignUpView",
+      "signin":"goToSignInView",
       "update/:firstName/:lastName/:email/:password":"signUpContact"
     },
 
@@ -154,7 +156,7 @@ define(function(require) {
         this.cartView = new CartView(); 
       }*/
      // Cart.addProduct(id,quantity);
-      console.log ("ciao from add");
+      console.log ("ciao from add in the router");
       //console.log(this.collection.get(id));
       if (!Cart.get(id)){
            this.model=new ProductCart({id:id,quantity:quantity});
@@ -180,19 +182,26 @@ define(function(require) {
       
     },
     
+    goToSignInView: function(){
+      var page=new SignInView();
+      this.changePage(page);
+      
+    },
+    
     signUpContact: function(firstName,lastName,email,password){
         
        var data={
             firstName:firstName,
             lastName:lastName,
             email:email,
-           password:password
+            password:password
        };
       
        Customer=data;
        console.log(Customer);
-       window.localStorage.setItem('customer', JSON.stringify(Customer));
-       console.log(window.localStorage.getItem('customer')); 
+       window.localStorage.setItem(data.email, JSON.stringify(Customer));
+       console.log(window.localStorage.getItem(data.email)); 
+       
     }
 
   });
