@@ -11,13 +11,14 @@ define(function (require) {
         //model: ProductCart,
         events: {
             "tap #increaseByone":"increaseByone",
-            "tap #decreaseByone":"decreaseByone"
+            "tap #decreaseByone":"decreaseByone",
+            "click #checkout":"checkout"
         },
         initialize: function (Cart) {
             $('a#back-button').css('display', 'block');
             $('a#toggle-button').css('display', 'none');
-            console.log("Ciao from intilize functio");
-            
+            console.log("Ciao from intilize function");
+            window.localStorage.removeItem("check");
             //console.log(this.template);
             this.template = Utils.templates.cart;
             this.collection = Cart;
@@ -85,6 +86,16 @@ define(function (require) {
             //console.log(this.model instanceof Backbone.Model);
             this.collection.add(this.model);
             console.log(this.collection);
+        },
+        
+        checkout:function(){
+            if (!window.localStorage.getItem("session"))
+            {
+                window.localStorage.setItem("check", "true"),
+                Backbone.history.navigate("signin", {
+            trigger: true
+            });
+            }    
         }
         
         

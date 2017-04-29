@@ -201,7 +201,18 @@ define(function(require) {
        console.log(Customer);
        window.localStorage.setItem(data.email, JSON.stringify(Customer));
        console.log(window.localStorage.getItem(data.email)); 
-       
+       window.localStorage.setItem("session","True");
+       if (!window.localStorage.getItem("check"))
+       {
+        Backbone.history.navigate("myview", {
+                trigger: true
+            });
+        }
+        else {
+          Backbone.history.navigate("cart", {
+                trigger: true
+            });
+        }
     }
 
   });

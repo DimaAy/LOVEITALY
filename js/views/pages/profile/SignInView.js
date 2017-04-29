@@ -67,9 +67,17 @@ define(function(require) {
       if (validity===0){
       console.log("sign in");
       window.localStorage.setItem("session","True");
+      if (!window.localStorage.getItem("check"))
+      {
       Backbone.history.navigate("myview", {
                 trigger: true
             });
+        }
+      else {
+          Backbone.history.navigate("cart", {
+                trigger: true
+            });
+      }
       /*Backbone.history.navigate("signup", {
         trigger: true
       });*/

@@ -10,9 +10,13 @@
                 <input type="button" id="increaseByone" value="increase" data-productid="{{id}}" />
                 <input type="text" id="cartnumber{{id}}"  value="{{quantity}}"/>
                 <input type="button" id="decreaseByone" value="decrease" data-productid="{{id}}"/>
-                <p>{{quantity}}</p>
+               
             </div>
        
         {{/each}}
     </div>
+     
+     <div id="checkout">
+        <input type="button"  value="Check out"/>
+     </div>
 </div>
