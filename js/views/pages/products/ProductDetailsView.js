@@ -58,12 +58,13 @@ define(function (require) {
         addtocart: function(event) {
             var id=$(event.currentTarget).data("productid");
             var quantity=document.getElementById('number').value;
+            var name=document.getElementById('name').value;
            
  
             document.getElementById('number').value = 1;
             console.log(id);
             console.log(quantity);
-            Backbone.history.navigate("addtocart/"+id+"/"+quantity, {
+            Backbone.history.navigate("addtocart/"+id+"/"+quantity+"/"+name, {
                 trigger: true
          });
         }

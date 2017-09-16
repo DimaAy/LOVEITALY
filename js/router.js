@@ -39,7 +39,7 @@ define(function(require) {
       "productdetails/:id":"productDetailsView",
       "productsbycategory/:id":"productsByCategoryView",
       "productsbycompany/:id":"productsByCompanyView",
-      "addtocart/:id/:quantity":"addToCartView",
+      "addtocart/:id/:quantity/:name":"addToCartView",
       "cart":"goToCart",
       "signup":"goToSignUpView",
       "signin":"goToSignInView",
@@ -148,7 +148,7 @@ define(function(require) {
     },
     
     
-    addToCartView :function(id,quantity) {
+    addToCartView :function(id,quantity,name) {
       //console.log("cioa router add to Cart");
       //console.log(this.cartView);
       /*if (!this.cartView) {
@@ -159,7 +159,7 @@ define(function(require) {
       console.log ("ciao from add in the router");
       //console.log(this.collection.get(id));
       if (!Cart.get(id)){
-           this.model=new ProductCart({id:id,quantity:quantity});
+           this.model=new ProductCart({id:id,quantity:quantity,name:name});
        }
        this.model.edit(quantity);
             //console.log(this.model instanceof Backbone.Model);
