@@ -67,6 +67,11 @@ define(function(require) {
       if (validity===0){
       console.log("sign in");
       window.localStorage.setItem("session","True");
+      window.localStorage.setItem("emailsession",email);
+      console.log("CHECK EMAIL"+window.localStorage.getItem("emailsession"));
+       Backbone.history.navigate("", {
+                trigger: true
+            });
       if (!window.localStorage.getItem("check"))
       {
       Backbone.history.navigate("myview", {

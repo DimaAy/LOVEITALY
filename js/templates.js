@@ -10,6 +10,7 @@
 //  - value: the path of the html file containing the HTML fragment of the template
 define({
     structure: "templates/structure.html",
+    profilestructre:"templates/profilestructre.html",
     myview: "templates/myview.html",
     productlist: "templates/product/productlist.html",
     categorylist: "templates/category/categorylist.html",
@@ -17,5 +18,7 @@ define({
     companylist:"templates/company/companylist.html",
     cart:"templates/cart/cart.html",
     signup:"templates/profile/signup.html",
-    signin:"templates/profile/signin.html"
+    signin:"templates/profile/signin.html",
+    aboutus:"templates/information/aboutus.html",
+    myprofile:"templates/profile/myprofile.html"
 });

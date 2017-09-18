@@ -17,6 +17,8 @@ define(function(require) {
   var ProductCart=require("models/ProductCart");
   var SignUpView=require("views/pages/profile/SignUpView");
   var SignInView=require("views/pages/profile/SignInView");
+  var AboutUsView=require("views/pages/information/AboutUsView");
+  var MyProfileView=require("views/pages/profile/MyProfileView");
   var Cart=require('collections/Cart');
   Cart=new Cart();
   var Customer=require("models/Customer");
@@ -43,7 +45,9 @@ define(function(require) {
       "cart":"goToCart",
       "signup":"goToSignUpView",
       "signin":"goToSignInView",
-      "update/:firstName/:lastName/:email/:password":"signUpContact"
+      "update/:firstName/:lastName/:email/:password":"signUpContact",
+      "aboutus":"goToAboutUs",
+      "myprofile":"goToMyProfileView"
     },
 
     firstView: "myview",
@@ -86,13 +90,12 @@ define(function(require) {
 
     // load the structure view
     showStructure: function() {
-      if (!this.structureView) {
+      
         this.structureView = new StructureView();
         // put the el element of the structure view into the DOM
         document.body.appendChild(this.structureView.render().el);
         this.structureView.trigger("inTheDOM");
-      }
-      console.log("PLEAAAASSSSEEE");
+        console.log("PLEAAAASSSSEEE");
       
       // go to first view
       this.navigate(this.firstView, {trigger: true});
@@ -188,6 +191,18 @@ define(function(require) {
       
     },
     
+    goToAboutUs:function(){
+      var page=new AboutUsView();
+      this.changePage(page);
+      
+    },
+    
+    goToMyProfileView: function(){
+      var page=new MyProfileView();
+      this.changePage(page);
+      
+    },
+    
     signUpContact: function(firstName,lastName,email,password){
         
        var data={
@@ -202,6 +217,7 @@ define(function(require) {
        window.localStorage.setItem(data.email, JSON.stringify(Customer));
        console.log(window.localStorage.getItem(data.email)); 
        window.localStorage.setItem("session","True");
+       window.localStorage.setItem("emailsession",data.email);
        if (!window.localStorage.getItem("check"))
        {
         Backbone.history.navigate("myview", {

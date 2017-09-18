@@ -19,16 +19,23 @@ define(function(require) {
       "tap #cart":"cart",
       //"tap #signup":"signup",
       "tap #signin":"signin",
-      "tap #signout":"signout"
+      "tap #signout":"signout",
+      "tap #aboutus":"aboutus",
+      "tap #myprofile":"myprofile"
     },
 
     initialize: function(options) {
       // load the precompiled template
       console.log("I AM HERE");
       
-      
+       if (!window.localStorage.getItem("session"))
+      {
      
       this.template = Utils.templates.structure;
+      }
+      else{
+          this.template = Utils.templates.profilestructre;
+      }
       //this.on("inTheDOM", this.rendered);
       // bind the back event to the goBack function
       //document.getElementById("back").addEventListener("back", this.goBack(), false);
@@ -106,6 +113,24 @@ define(function(require) {
     
     signout: function(){
         window.localStorage.removeItem("session");
+        window.localStorage.removeItem("emailsession");
+        Backbone.history.navigate("", {
+                trigger: true
+            });
+        Backbone.history.navigate("myview", {
+                trigger: true
+            });
+    },
+    
+    aboutus: function (){
+        Backbone.history.navigate("aboutus", {
+        trigger: true
+      });
+    },
+    myprofile: function (){
+        Backbone.history.navigate("myprofile", {
+        trigger: true
+      });
     }
     
     /*signup:function(event) {
