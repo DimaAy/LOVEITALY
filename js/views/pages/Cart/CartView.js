@@ -95,7 +95,12 @@ define(function (require) {
                 Backbone.history.navigate("signin", {
             trigger: true
             });
-            }    
+            }
+            else{
+                Backbone.history.navigate("checkout", {
+            trigger: true
+            });
+            }
         }
         
         

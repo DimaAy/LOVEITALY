@@ -18,6 +18,7 @@ define(function(require) {
   var SignUpView=require("views/pages/profile/SignUpView");
   var SignInView=require("views/pages/profile/SignInView");
   var AboutUsView=require("views/pages/information/AboutUsView");
+  var CheckOutView=require("views/pages/Cart/CheckOutView");
   var MyProfileView=require("views/pages/profile/MyProfileView");
   var Cart=require('collections/Cart');
   Cart=new Cart();
@@ -47,6 +48,7 @@ define(function(require) {
       "signin":"goToSignInView",
       "update/:firstName/:lastName/:email/:password":"signUpContact",
       "aboutus":"goToAboutUs",
+      "checkout":"goToCheckOut",
       "myprofile":"goToMyProfileView"
     },
 
@@ -193,6 +195,11 @@ define(function(require) {
     
     goToAboutUs:function(){
       var page=new AboutUsView();
+      this.changePage(page);
+      
+    },
+    goToCheckOut:function(){
+      var page=new CheckOutView();
       this.changePage(page);
       
     },

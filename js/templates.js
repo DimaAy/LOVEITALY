@@ -20,5 +20,6 @@ define({
     signup:"templates/profile/signup.html",
     signin:"templates/profile/signin.html",
     aboutus:"templates/information/aboutus.html",
-    myprofile:"templates/profile/myprofile.html"
+    myprofile:"templates/profile/myprofile.html",
+    checkout:"templates/cart/checkout.html"
 });
