@@ -37,18 +37,18 @@ define(function(require) {
       $(this.el).html(this.template());
       return this;
     },
-    
+
     signup:function() {
       Backbone.history.navigate("signup", {
         trigger: true
       });
     },
-    
-    
+
+
     check:function() {
        $('#signinError').text("");
        var validity=0;
-       email= $("#email").val();    
+       email= $("#email").val();
        password= $("#password").val();
        console.log(email);
        console.log(password);
@@ -56,7 +56,7 @@ define(function(require) {
        {
            var user=JSON.parse(window.localStorage.getItem(email));
            console.log(user.password);
-           if (user.password!==password) 
+           if (user.password!==password)
            {
                validity++;
            }
@@ -89,11 +89,11 @@ define(function(require) {
       }
       else{
           //$('#lastnameError').attr('class', 'mostra');
-          $('#signinError').text("the user or password are not correct");
+          $('#signinError').text("The user or password are not correct");
       }
     }
- 
-    
+
+
   });
 
   return SignInView;
