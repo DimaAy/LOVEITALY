@@ -1,15 +1,25 @@
 <div class="content-block-inner">
-    <div class="cart-heading-1 ">
+  <!--  <div class="cart-heading-1 ">
         <h3>Products</h3>
-    </div>
+    </div>-->
+
     <div class="shop-area">
         {{#each Product}}
+        <ul class="table-view card">
+         <li class="table-view-cell ">
         <div  id="productdetails" data-productid="{{id}}">
-            <div >
-                <h2><a href="#">{{name}}</a></h2>
+
+            <div>
+
+                <h5><font color=#107f3f><b><a href="#">{{name}}</a></b></font></h5>
                 <p>{{{description_short}}}</p>
+
             </div>
+
         </div>
+      </li>
+      </ul>
         {{/each}}
+
     </div>
 </div>

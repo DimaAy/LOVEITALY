@@ -1,49 +1,77 @@
 <header class="bar bar-nav">
-      <h1 class="title">LoveItaly</h1> 
-      <img src="img/hereIcon.png">
+    <a class="icon tab-item active pull-left" href="#popover">
+        <img src="img/iconmenu.png" alt="">
+    </a>
+    <a class="icon tab-item active pull-right" id="myprofile">
+      <img src="img/iconmenu2.png" alt="">
+    </a>
+    <a class="title tab-item active" >
+      <img src="img/logo2.png" alt="Love Italy">
+    </a>
 </header>
 
- <nav class="bar bar-header-secondary">
-  <a class="tab-item active" id="nav1">
-    Home
-  </a>
-  <a class="tab-item" id="nav2">
-    Nav2
-  </a>
-  <a class="tab-item" id="productlist">
-    Products
-  </a>
-  <a class="tab-item" id="categorylist">
-    Categories
-  </a>
-     
-  <a class="tab-item" id="companylist">
-    Companies
-  </a>
-     
-  <a class="tab-item" id="cart">
-    My Cart
-  </a>
-     
-  <a class="tab-item" id="myprofile">
-    My Profile
-  </a>
-     
-  <a class="tab-item" id="signout">
-    Sign Out
-  </a>
-     
-   <a class="tab-item" id="aboutus">
-    About Us
-  </a>
-  
-</nav>
 
 
 
-<!-- <nav id="navigation">
-    <div id="nav1" class="i-4">nav 1</div>
-    <div id="nav2" class="i-8">nav 2</div>
-</nav> -->
+
+<!-- Don't forget the Menu close if doesn't work change the menu!!!!-->
+    <div id="popover" class="popover">
+      <nav>
+        <header class="bar nav-bar">
+          <h1 class="title"><b>Menu</b></h1>
+        </header>
+        <ul class="table-view" background-color="red">
+            <li class="tab-item active table-view-cell media " >
+            <a id="nav1" >
+             <span class="media-object pull-left icon icon-home "></span>
+               <div class="media-body">Home</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media ">
+            <a id="productlist">
+             <span class="media-object pull-left icon icon-list close"></span>
+               <div class="media-body">Products</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media">
+            <a id="categorylist">
+             <span class="media-object pull-left icon icon-pages"></span>
+               <div class="media-body">Categories</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media">
+            <a id="companylist">
+             <span class="media-object pull-left icon icon-bars"></span>
+               <div class="media-body">Companies</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media">
+            <a id="cart">
+             <span class="media-object pull-left icon icon-download"></span>
+               <div class="media-body">Shopping cart</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media">
+            <a id="myprofile">
+             <span class="media-object pull-left icon icon-person"></span>
+               <div class="media-body">My Profile</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media">
+            <a id="aboutus">
+             <span class="media-object pull-left icon icon-edit"></span>
+               <div class="media-body">About Us</div>
+            </a>
+            </li>
+            <li class="tab-item active table-view-cell media" >
+            <a id="signout">
+             <span class="media-object pull-left icon icon-left"></span>
+               <div class="media-body">Sign Out</div>
+            </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
 <div id="content" class="content">
 </div>

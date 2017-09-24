@@ -1,23 +1,48 @@
 <div class="content-block-inner">
-    <div class="cart-heading-1 ">
-        <h3>Product Details</h3>
-    </div>
-    <div class="shop-area">
-        
+
+    <div class="shop-area centerproduct">
+
         <div>
-            <h2>{{product.name}}</h2>
-             <p>Price {{twodigit product.price}}€</p>
-             <p>{{{product.description_short}}}</p>
-            <img src="http://loveitaly.altervista.org/api/images/products/{{product.id}}/{{product.id_default_image}}?ws_key=IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H" alt="img/hereIcon.png">
-            <form>
+            <div class="card"   >
+            <div>
+            <img src="http://loveitaly.altervista.org/api/images/products/{{product.id}}/{{product.id_default_image}}?ws_key=IYI6M35MLB8UVW38Y99RY3YPQWRX5X8H" alt="img/hereIcon.png" style='max-height:250px; max-width:250px; margin:auto; object-fit: cover'>
+            </div>
+            <h4><font color=#107f3f><b>{{product.name}}</b></font></h4> <h6>{{product.stock_availables}}</h6>
+             <p><b>Price</b> {{twodigit product.price}}€</p>
+
+             <p>{{{product.description}}}</p>
+
+</div>
+           <!--Don't forget the buttons!!-->
+            <div class=" card" >
+<!--
+              <input class="w3-btn w3-black" type="button" value="Input Button">
+              <button class="w3-btn w3-black">Button Button</button>
+-->
+
+                <!--<input class="w3-button w3-large w3-circle w3-xlarge w3-ripple w3-grey" type="button" >-->
                 <input type="hidden" id="name" value="{{product.name}}">
-                <input type="button" id="increaseQuantity" value="increase" />
-                <input type="text" id="number" value="1"/>
-                <input type="button" id="decreaseQuantity" value="decrease"/>
-                <input type="button" id="addtocart"  data-productid="{{product.id}}" value="add to the cart"/>
-            </form>
-               
+                <button type="button" style='margin-top:2px' class="btn btn-default w3-circle w3-grey w3-centered w3-tiny" id="decreaseQuantity" value="-"> -  </button>
+                <output type="text" id="number" value="1">1</output>
+                <button type="button" style='margin-top:2px' class="btn btn-default w3-circle w3-grey w3-centered w3-tiny" value="+" id="increaseQuantity"> + </button>
+
+                <button href="#popup1" type="button" class="w3-btn w3-white w3-border w3-border-green w3-tiny w3-round-xlarge w3-right " id="addtocart" data-productid="{{product.id}}" data-productname="{{product.name}}"> Add to cart </button>
+
+                <div id="popup1" class="overlay">
+                	<div class="popup">
+                		<h2>Added to cart!</h2>
+                		<a class="close" href="#">&times;</a>
+                		<div class="content">
+                			<p>{{quantity}} items of {{name}} were added to your cart</p>
+                		</div>
+                	</div>
+                </div>
+
+
+
+              </div>
+            </div>
         </div>
-       
+
     </div>
 </div>

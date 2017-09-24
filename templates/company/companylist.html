@@ -1,14 +1,17 @@
 <div class="content-block-inner">
-    <div class="cart-heading-1 ">
-        <h2>Companies</h2>
-    </div>
+  <img src="img/produttori.jpg" height="100%" width="100%"/>
     <div class="shop-area">
         {{#each Company}}
+        <ul class="table-view">
+         <li class="table-view-cell media">
         <div  id="productsbycompany" data-companyid="{{id}}">
             <div >
-                <h3><a href="#">{{name}}</a></h3>
-            </div>
+              <h5><font color=#107f3f><b><a href="#">{{name}}</a></b></font></h5>
+              <p>{{meta_description}}</p>
+        <!--      <h6><b>Delivery to:</b> {{consegna}} </h6>-->
         </div>
+      </li>
+    </ul>
         {{/each}}
     </div>
 </div>

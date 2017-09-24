@@ -1,23 +1,30 @@
 <div class="content-block-inner">
-    <div class="cart-heading-1 ">
-        <h2>My Cart</h2>
-    </div>
+<h4> <tb> You have in your cart the following products </h4>
     <div class="shop-area">
         {{#each Cart}}
-        
-            <div >
-                <h3>{{id}}</h3>
-                <h3>{{name}}</h3>
-                <input type="button" id="increaseByone" value="increase" data-productid="{{id}}" />
-                <input type="text" id="cartnumber{{id}}"  value="{{quantity}}"/>
-                <input type="button" id="decreaseByone" value="decrease" data-productid="{{id}}"/>
-               
-            </div>
-       
+
+            <ul class="card media" style="height: auto">
+<li>
+                <h5> {{name}} </h5>
+
+                    <button type="button" class="btn btn-default w3-circle w3-grey w3-centered w3-tiny" id="decreaseByone" value="decrease" data-productid="{{id}}"> - </button>
+                    <output type="text" id="cartnumber{{id}}"  value="{{quantity}}">{{quantity}}</output>
+                  <button type="button" class="btn btn-default w3-circle w3-grey w3-centered w3-tiny" id="increaseByone" value="+" data-productid="{{id}}"> + </button>
+
+
+</li>
+
+
+
+            </ul>
+
         {{/each}}
     </div>
-     
-     <div id="checkout">
-        <input type="button"  value="Check out"/>
+
+     <div id="checkout" class="center">
+          <button type="button" class="w3-btn w3-white w3-border w3-border-green w3-tiny w3-round-xlarge w3-right "  value="Check out"> Check Out </button>
+
+</div>
+
      </div>
 </div>

@@ -1,29 +1,27 @@
 <div class="profile-container">
     <!--  <h1> Riepilogo Profilo </h1>-->
-    <div class="cart-heading-1 ">
-        <h2>Sign up</h2>
-    </div>
-    <div class="register-content">
-        <form name="registration">
-            <div class="inputbox-profile">
-                <span>Name:</span><br>
-                <input type="text"  id="firstname"  name="firstname" placeholder="Firstname" required />
-                <span id="firstnameError" class="formError"></span>
+    <div class="register-content card">
+        <form name="registration" class="input-group center">
+
+            <div class="input-row" style="height:auto">
+                <label>First Name</label><br>
+                <input type="text"  id="firstname"  name="firstname" placeholder="First Name" required /><br>
+                <span id="firstnameError" class="formError" style="font-size:12px; font: verdana"></span>
             </div>
-            <div class="inputbox-profile">
-                <span>Last Name:</span><br>
-                <input type="text" name="lastname" id="lastname" placeholder="Lastname" required/>
-                <span id="lastnameError" class="formError"></span>
+            <div class="input-row" style="height:auto">
+                <label>Last Name</label><br>
+                <input type="text" name="lastname" id="lastname" placeholder="Lastname" required/><br>
+                <span id="lastnameError" class="formError" style="font-size:12px; font: verdana"></span>
             </div>
-            <div class="inputbox-profile">
-                <span>Email:</span><br>
-                <input type="email" name="email"  id="email" placeholder="Email" required/>
-                <span id="emailError" class="formError"></span>
+            <div class="input-row" style="height:auto">
+                <label>Email</label><br>
+                <input type="email" name="email"  id="email" placeholder="Email" required/><br>
+                <span id="emailError" class="formError" style="font-size:12px; font:verdana"></span>
             </div>
-            <div class="inputbox-profile">
-                <span>Password</span><br>
-                <input type="password" name="password" id="password" placeholder="Password" required/>
-                <span id="passwordError" class="formError"></span>
+            <div class="input-row" style="height:auto">
+                <label>Password</label><br>
+                <input type="password" name="password" id="password" placeholder="Password" required/><br>
+                <span id="passwordError" class="formError" style="font-size:12px; font:verdana"></span>
             </div>
             <!--div class="inputbox-profile">
                 <span>Riperti Password</span><br>
@@ -51,10 +49,9 @@
                 <input type="text" name="city" id="city"  placeholder="City" />
                 <span id="cityError" class="formError"></span>
             </div-->
-            
-                <input type="button" id="update" value="Sign Up"/>
 
-            
+                <input type="button" class="w3-btn w3-white w3-border w3-border-grey w3-medium w3-round-large" id="update" value="Sign Up"/>
+
         </form>
 
 

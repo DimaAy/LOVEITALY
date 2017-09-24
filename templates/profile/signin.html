@@ -1,23 +1,22 @@
 <div class="profile-container">
     <!--  <h1> Riepilogo Profilo </h1>-->
-    <div class="cart-heading-1 ">
-        <h2>Sign up</h2>
-    </div>
-    <div class="register-content">
-        <form name="registration">
-            <div class="inputbox-profile">
-                <span>Email:</span><br>
-                <input type="email" name="email"  id="email" placeholder="Email" required/>
-            </div>
-            <div class="inputbox-profile">
-                <span>Password</span><br>
-                <input type="password" name="password" id="password" placeholder="Password" required/>
-            </div>
 
-            <input type="button" id="check" value="Sign In"/>
+    <div class="register-content card ">
+        <form name="registration" class="input-group center ">
+            <div class="input-row" style="height:auto">
+                <label>Email</label><br>
+                <input type="email" name="email"  id="email" placeholder="Enter your email" required/>
+            </div>
+            <div class="input-row" style="height:auto">
+                <label>Password</label><br>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required/>
+            </div>
+<!--style="w3-btn; w3-white; w3-border-red; w3-rounde-large" -->
+            <input type="button" class="w3-btn w3-white w3-border w3-border-grey w3-medium w3-round-large" id="check" value="Sign In"/>
             <span id="signinError" class="formError"></span>
              <div  id="signup" >
-             <h3><a href="#">new,sign up</a></h3>
+
+             <p><font color=#107f3f><a href="#">Not registered? Sign up!</a></font></p>
              </div>
         </form>
 

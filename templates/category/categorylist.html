@@ -1,14 +1,16 @@
 <div class="content-block-inner">
-    <div class="cart-heading-1 ">
-        <h2>Products</h2>
-    </div>
     <div class="shop-area">
         {{#each Category}}
+        <ul class="table-view">
+         <li class="table-view-cell media">
         <div  id="productsbycategory" data-categoryid="{{id}}">
-            <div >
-                <h3><a href="#">{{name}}</a></h3>
-            </div>
+
+                <!--<h3><a href="#">{{name}}</a></h3>-->
+              <a href="#">  <img class="media-object" src="../img/{{name}}.jpg" width="100%" hight="100%" alt="{{name}}" style="object-fit: fil"></a>
+
         </div>
+      </li>
+    </ul>
         {{/each}}
     </div>
 </div>
